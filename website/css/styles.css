@@ -1,0 +1,719 @@
+/* ==========================================================================
+   1. BRAND ARCHITECTURE & SYSTEM VARIABLES
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Color Palette Hierarchy */
+  --bg-main: #0D1B2A;          /* Deep Navy Canvas */
+  --bg-surface: #1A2D45;       /* Dark Steel Container Cards */
+  --brand-accent: #70B5F9;     /* Sky Accent (Used to mark what matters) */
+  --brand-authority: #0A66C2;  /* LinkedIn Blue */
+  --brand-deep: #004182;       /* Deep Blue */
+  
+  /* Typography Tokens */
+  --font-editorial: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+  
+  /* Text States */
+  --text-primary: #FFFFFF;
+  --text-muted: #A3B1C6;
+  
+  /* Structural Tokens */
+  --border-subtle: rgba(112, 181, 249, 0.12);
+  --border-focus: rgba(112, 181, 249, 0.4);
+  --radius-premium: 12px;
+  --transition-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+}
+/* ==========================================================================
+   BRAND LOGO RECREATION
+   ========================================================================== */
+.brand {
+  /* Ensure the link container aligns properly in your navbar */
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logo-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers the tagline under the main text */
+  justify-content: center;
+}
+
+.logo-main {
+  font-family: var(--font-sans); /* Uses your Montserrat font */
+  font-size: 2.2rem;             /* Large, bold presence */
+  font-weight: 800;              /* Extra thick weight */
+  letter-spacing: 0.02em;        /* Keeps the letters tight like the image */
+  color: #F4F6F9;                /* Crisp off-white */
+  line-height: 1;
+}
+
+.logo-accent {
+  color: #0C6ED1;                /* Matches the vibrant blue in your logo */
+}
+
+
+/* ==========================================================================
+   2. CORE BASE RESET & TYPOGRAPHY
+   ========================================================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-main);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--text-primary);
+  background-color: var(--bg-main);
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s var(--transition-smooth);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.container {
+  width: min(1200px, calc(100% - 4rem));
+  margin: 0 auto;
+}
+
+/* Heading Treatments - Quiet Confidence */
+h1, h2, h3 {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.section-title {
+  font-family: var(--font-editorial);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 400;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+.section-intro {
+  font-family: var(--font-sans);
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  color: var(--text-muted);
+  max-width: 640px;
+  margin-bottom: 4rem;
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+/* ==========================================================================
+   3. COMPONENTS & BUTTONS
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  border-radius: var(--radius-premium);
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.4s var(--transition-smooth);
+  border: 1px solid transparent;
+}
+
+.btn-primary {
+  background-color: var(--text-primary);
+  color: var(--bg-main);
+}
+
+.btn-primary:hover {
+  background-color: transparent;
+  color: var(--brand-accent);
+  border-color: var(--brand-accent);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--text-primary);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.btn-secondary:hover {
+  border-color: var(--text-primary);
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   4. GLOBAL NAVIGATION HEADER
+   ========================================================================== */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background-color: rgba(13, 27, 42, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 0;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.brand img {
+  width: auto;
+  height: 40px;
+  object-fit: contain;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.nav-links a {
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+.nav-links a:hover, 
+.nav-links a.active {
+  color: var(--brand-accent);
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-size: 1.75rem;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+/* ==========================================================================
+   5. PREMIUM HERO ARCHITECTURE (Refined)
+   ========================================================================== */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  /* Fixed padding to prevent edge touching */
+  padding: 140px 2rem 80px 2rem; 
+  overflow: hidden;
+}
+
+.hero-content {
+  position: relative;
+  width: 100%;
+  max-width: 1200px; /* Constrains content so it doesn't stretch infinitely */
+  margin: 0 auto;    /* Centers the content block */
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Uses equal fractional units for better balance */
+  align-items: center;
+  gap: 4rem;
+}
+
+.hero-copy {
+  z-index: 10;
+}
+
+.hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.hero-badges span {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brand-accent);
+  background-color: rgba(112, 181, 249, 0.08);
+  padding: 0.4rem 1rem;
+  border-radius: 4px;
+  border: 1px solid var(--border-subtle);
+}
+
+.hero h1 {
+  font-family: var(--font-editorial);
+  font-size: clamp(2.5rem, 5vw, 4.5rem); /* Slightly adjusted for better scaling */
+  line-height: 1.1;
+  font-weight: 400;
+  margin-bottom: 2rem;
+}
+
+.hero p {
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  color: var(--text-muted);
+  font-weight: 300;
+  line-height: 1.7;
+  margin-bottom: 3rem;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1.5rem;
+}
+
+/* Updated Image Wrapper for better responsiveness */
+.hero-image-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.hero-image-wrapper img {
+  width: 100%;
+  height: 550px; /* Fixed height is often more reliable than vh */
+  object-fit: cover;
+  object-position: center;
+  border-radius: var(--radius-premium);
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+}
+
+/* Tablet Responsive Adjustment */
+@media (max-width: 1024px) {
+  .hero-content {
+    grid-template-columns: 1fr; /* Stack on medium screens */
+    text-align: center;
+  }
+  .hero-actions {
+    justify-content: center; /* Center buttons on mobile/tablet */
+  }
+  .hero-image-wrapper {
+    display: none; /* Hide image on tablets if needed, or keep for visual interest */
+  }
+
+}
+
+/* ==========================================================================
+   6. GRID SYSTEMS & CARD DESIGNS
+   ========================================================================== */
+.section {
+  padding: 8rem 0;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+/* Updated for images */
+.card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-premium);
+  padding: 3rem 2.5rem;
+  transition: all 0.4s var(--transition-smooth);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  border-color: var(--border-focus);
+  transform: translateY(-4px);
+}
+
+.card h3 {
+  font-size: 1.35rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  letter-spacing: -0.01em;
+}
+
+.card p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+.card-img {
+  width: calc(100% + 5rem);
+  max-width: none;
+  height: 220px;
+  margin: -3rem -2.5rem 2rem -2.5rem;
+  object-fit: cover;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+/* Grid adjustment for services */
+main .section .card-grid {
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+}
+
+/* ==========================================================================
+   7. TECH METRICS ENGINE
+   ========================================================================== */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.stat {
+  background-color: rgba(26, 45, 69, 0.4);
+  border: 1px solid var(--border-subtle);
+  padding: 2.5rem 2rem;
+  border-radius: var(--radius-premium);
+  text-align: left;
+}
+
+.stat strong {
+  display: block;
+  font-family: var(--font-editorial);
+  font-size: clamp(2.5rem, 4vw, 4rem);
+  font-weight: 400;
+  color: var(--brand-accent);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.stat span {
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   8. SYSTEM TESTIMONIALS
+   ========================================================================== */
+.testimonial {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-premium);
+  padding: 3.5rem 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.testimonial-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--border-subtle);
+  margin-bottom: 1.5rem;
+}
+
+.testimonial .quote {
+  font-family: var(--font-editorial);
+  font-size: 1.5rem;
+  line-height: 1.5;
+  font-style: italic;
+  color: var(--text-primary);
+  margin-bottom: 2rem;
+}
+
+.testimonial .person {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--brand-accent);
+}
+
+/* ==========================================================================
+   9. INTERACTIVE CONTACT INFRASTRUCTURE
+   ========================================================================== */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+.info-list {
+  list-style: none;
+  margin-top: 2.5rem;
+}
+
+.info-list li {
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  color: var(--text-muted);
+  font-weight: 300;
+}
+
+.info-list strong {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--brand-accent);
+  margin-bottom: 0.25rem;
+}
+
+.form-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-premium);
+  padding: 3.5rem;
+}
+
+.form-card input,
+.form-card textarea {
+  width: 100%;
+  margin-bottom: 1.5rem;
+  padding: 1.1rem 1.25rem;
+  background-color: var(--bg-main);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  font-family: var(--font-sans);
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  transition: border-color 0.3s var(--transition-smooth);
+}
+
+.form-card input::placeholder,
+.form-card textarea::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.form-card input:focus,
+.form-card textarea:focus {
+  outline: none;
+  border-color: var(--brand-accent);
+}
+
+.form-card textarea {
+  min-height: 160px;
+  resize: vertical;
+}
+
+.form-card .btn {
+  width: 100%;
+}
+
+/* ==========================================================================
+   10. PROFESSIONAL GLASS FOOTER SYSTEM
+   ========================================================================== */
+.footer {
+  background: rgba(13, 27, 42, 0.6); /* Semi-transparent base */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid var(--glass-border);
+  padding: 5rem 0 3rem;
+  margin-top: 6rem;
+  color: var(--text-muted);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr; /* 4 columns for hierarchy */
+  gap: 3rem;
+  margin-bottom: 4rem;
+}
+
+.footer-col h4 {
+  color: var(--text-primary);
+  font-family: var(--font-editorial);
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+}
+
+.footer-col p {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.footer-links {
+  list-style: none;
+}
+
+.footer-links li {
+  margin-bottom: 0.75rem;
+}
+
+.footer-links a {
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: var(--brand-accent);
+}
+
+.footer-bottom {
+  border-top: 1px solid var(--glass-border);
+  padding-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1fr; /* Stack columns on mobile */
+    gap: 2rem;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+}
+
+/* ==========================================================================
+   11. FLOATING BRAND ACTIONS
+   ========================================================================== */
+.whatsapp-float {
+  position: fixed;
+  right: 2rem;
+  bottom: 2rem;
+  z-index: 90;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: rgba(26, 45, 69, 0.8);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.3s var(--transition-smooth);
+}
+
+.whatsapp-float:hover {
+  color: #25D366;
+  border-color: rgba(37, 211, 102, 0.4);
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   12. RESPONSIVE DESIGN ORCHESTRATION
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .hero-image-wrapper {
+    display: none; 
+  }
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 120px 1.5rem 60px 1.5rem; /* Mobile hero padding adjustment */
+  }
+  .container {
+    width: min(100%, calc(100% - 3rem));
+  }
+  .section {
+    padding: 5rem 0;
+  }
+  .nav-links {
+    position: fixed;
+    top: 69px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 69px);
+    background-color: var(--bg-main);
+    flex-direction: column;
+    justify-content: center;
+    gap: 3rem;
+    display: none;
+    padding: 2rem;
+  }
+  .nav-links.open {
+    display: flex;
+  }
+  .nav-toggle {
+    display: block;
+  }
+  .card-grid, .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  .form-card {
+    padding: 2rem;
+  }
+ /* 1. Stack the main footer columns */
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem; /* Increased gap for better separation */
+    text-align: center; /* Centers the text for mobile readability */
+  }
+
+  /* 2. Improve the bottom footer area */
+  .footer-bottom {
+    flex-direction: column;
+    gap: 1.5rem; /* More space between copyright and legal links */
+    text-align: center;
+    padding-top: 2.5rem; /* Extra breathing room from the top content */
+  }
+
+  /* 3. Ensure links are easy to tap */
+  .footer-links li {
+    margin-bottom: 1rem; /* Larger touch targets for mobile */
+  }
+
+}

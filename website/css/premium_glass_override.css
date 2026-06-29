@@ -1,0 +1,92 @@
+
+/* PREMIUM GLASSMORPHISM OVERRIDE LAYER */
+:root {
+  --bg-main: #07111f;
+  --bg-surface: rgba(255,255,255,0.08);
+  --glass-bg: rgba(255,255,255,0.08);
+  --glass-bg-strong: rgba(255,255,255,0.12);
+  --glass-input: rgba(255,255,255,0.05);
+  --glass-border: rgba(255,255,255,0.18);
+  --glass-shadow: 0 8px 32px rgba(0,0,0,0.35);
+  --glass-blur: blur(18px);
+}
+
+html, body {
+  background:
+    radial-gradient(circle at top left, rgba(112,181,249,.15), transparent 35%),
+    radial-gradient(circle at bottom right, rgba(10,102,194,.18), transparent 40%),
+    linear-gradient(135deg,#07111f,#10243c,#17375a);
+  background-attachment: fixed;
+}
+
+.site-header,
+.card,
+.stat,
+.testimonial,
+.form-card,
+.hero-badges span,
+.whatsapp-float {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+.card:hover,
+.stat:hover,
+.testimonial:hover {
+  background: var(--glass-bg-strong);
+  transform: translateY(-6px);
+}
+
+.btn-primary {
+  background: rgba(255,255,255,.14);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,.25);
+  backdrop-filter: blur(12px);
+}
+
+.btn-primary:hover {
+  background: rgba(112,181,249,.18);
+  border-color: var(--brand-accent);
+  color: #fff;
+}
+
+.btn-secondary {
+  background: rgba(255,255,255,.06);
+  backdrop-filter: blur(12px);
+}
+
+.form-card input,
+.form-card textarea {
+  background: var(--glass-input);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,.14);
+}
+
+.form-card input:focus,
+.form-card textarea:focus {
+  border-color: var(--brand-accent);
+  box-shadow: 0 0 0 4px rgba(112,181,249,.12);
+}
+
+.hero-image-wrapper img {
+  border: 1px solid rgba(255,255,255,.2);
+  box-shadow: 0 25px 60px rgba(0,0,0,.45);
+}
+
+.section {
+  border-top: 1px solid rgba(255,255,255,.08);
+}
+
+.nav-links.open {
+  background: rgba(7,17,31,.85);
+  backdrop-filter: blur(24px);
+}
+
+.footer {
+  background: rgba(255,255,255,.03);
+  backdrop-filter: blur(16px);
+}
